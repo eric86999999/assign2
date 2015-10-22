@@ -26,8 +26,8 @@ void setup () {
   GAMEMODE=1;
   fighterX=540;                       
   fighterY=240;
-  treasureX=floor(random(30,610));
-  treasureY=floor(random(30,450));
+  treasureX=floor(random(30,589));
+  treasureY=floor(random(30,429));
   enemyX=-61;
   enemyY=floor(random(0,429));
   health=610;
@@ -108,8 +108,8 @@ case 2:                                //start game
         }
   }     
      if(fighterY+25.5>=treasureY && fighterY+25.5<=treasureY+41 && fighterX>=treasureX && fighterX<=treasureX+51){
-      treasureX=floor(random(0,599));
-      treasureY=floor(random(0,439));      
+      treasureX=floor(random(0,589));
+      treasureY=floor(random(0,429));      
       if(health<=590){
         health+=20;
   }
