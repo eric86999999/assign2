@@ -29,7 +29,7 @@ void setup () {
   fighterY=240;
   treasureX=floor(random(30,610));
   treasureY=floor(random(30,450));
-  enemyX=-61;
+  enemyX=-200;
   enemyY=floor(random(0,429));
   health=610;
 }
@@ -87,7 +87,7 @@ case 2:                                //start game
    enemyX+=5;
    if(enemyX>=780){                    //border restart & random spawn
     enemyY=floor(random(30,450));
-    enemyX=-61;
+    enemyX=-200;
    }
 
   rectMode(CORNERS);                    //hp gauge
