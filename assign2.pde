@@ -81,7 +81,7 @@ case 2:                                //start game
   image(treasure,treasureX,treasureY); //treasure
 
   image(enemy,enemyX,enemyY);          //moving enemy
-   enemyX+=8;
+   enemyX+=6;
    if(enemyX>=780){                    //border restart & random spawn
     enemyY=floor(random(30,450));
     enemyX=-61;
@@ -95,7 +95,8 @@ case 2:                                //start game
 
   
                                         //damage/heal detector
-  if(enemyY+30.5>=fighterY && enemyY+30.5<=fighterY+51 && enemyX+61>=fighterX && enemyX+61<=fighterX+61){
+  if(fighterY+25.5>=enemyY && fighterY+25.5<=enemyY+61 && fighterX<=enemyX+61 && fighterX>=enemyX){
+                                                                                           
         
      if(health>450){
       enemyX=-61;
@@ -106,7 +107,7 @@ case 2:                                //start game
        GAMEMODE=3;
         }
   }     
-     if(fighterY+25.5>=treasureY && fighterY+25.5<=treasureY+51 && fighterX<=treasureX+51 && fighterX>=treasureX ){
+     if(fighterY+25.5>=treasureY && fighterY+25.5<=treasureY+41 && fighterX>=treasureX && fighterX<=treasureX+51){
       treasureX=floor(random(0,599));
       treasureY=floor(random(0,439));      
       if(health<=590){
