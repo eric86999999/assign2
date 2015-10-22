@@ -90,7 +90,7 @@ case 2:                                //start game
     enemyX=-61;
    }
 
-  rectMode(CORNERS);                    //chp gauge
+  rectMode(CORNERS);                    //hp gauge
   fill(255,0,0);
   rect(410,50,health,30);               //hp gauge 410:min,610:max
   stroke(255,0,0);
