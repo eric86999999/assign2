@@ -70,12 +70,6 @@ case 2:                                //start game
   leftDetect=floor(random(fighterY,fighterY+51));
   rightDetect=floor(random(fighterY,fighterY+51));
   
-  println("up"+upDetect);
-  println("down"+downDetect);
-  println("left"+leftDetect);
-  println("right"+rightDetect);
-
-
   image(fighter,fighterX,fighterY);     //fighter
   if(upPressed && fighterY>0){
     fighterY-=4;
