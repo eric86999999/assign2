@@ -1,6 +1,6 @@
 PImage bg1,bg2,start1,start2,end1,end2,enemy,fighter,hp,treasure;
 int health,bgX,bgY,GAMEMODE=1,fighterX,fighterY,treasureX,treasureY,enemyX,enemyY;
-int upDetect,downDetect,leftDetect,rightDetect;                         //used to detect collision
+int upDetect,downDetect,leftDetect,rightDetect;                         //detect collision
 boolean upPressed=false;
 boolean downPressed=false;
 boolean leftPressed=false;
@@ -36,7 +36,6 @@ void setup () {
 
 void draw() {
 
-
 switch(GAMEMODE){
 
 case 1:                         //start menu
@@ -50,8 +49,6 @@ GAMEMODE=2;
 }
  break;
    
-
-
 case 2:                                //start game
 
   image(bg2,bgY,0);                    //background scrolling
@@ -99,7 +96,6 @@ case 2:                                //start game
   stroke(255,0,0);
   image(hp,405,28);
 
-  
                                         //damage detector
   if(upDetect>=enemyX && upDetect<=enemyX+61 && fighterY>=enemyY && fighterY<=enemyY+61 || downDetect>=enemyX && downDetect<=enemyX+61 && fighterY+51>=enemyY && fighterY+51<=enemyY+61
       || leftDetect>=enemyY && leftDetect<=enemyY+61 && fighterX>=enemyX && fighterX<=enemyX+61 || rightDetect>=enemyY && rightDetect<=enemyY+61 && fighterX+51>=enemyX && fighterX+51<=enemyX+61){
@@ -150,8 +146,6 @@ else if(enemyY+30.5<=fighterY+25.5 && fighterY-enemyX<=480){
 }
 break;
    
-
-
 case 3:                               //game over
   image(end2,0,0);
   if ((mouseX<width*2/3 && mouseX>width*1/3)&&(mouseY<355 && mouseY>308)){
@@ -164,15 +158,9 @@ if(mousePressed){
   GAMEMODE=2;
  } 
 }
-
   break;
 }
-
 }
-
-
-
-  
 
 void keyPressed(){                    //key detection
     if (key == CODED) {
