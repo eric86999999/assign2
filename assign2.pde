@@ -102,7 +102,7 @@ case 2:                                //start game
                                                                                            
         
      if(health>450){
-      enemyX=-61;
+      enemyX=-200;
       enemyY=floor(random(0,429));      
       health-=40;
             }
