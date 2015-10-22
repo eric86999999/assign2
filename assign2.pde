@@ -87,7 +87,7 @@ case 2:                                //start game
     enemyX=-61;
    }
 
-  rectMode(CORNERS);                    //chp gauge
+  rectMode(CORNERS);                    //hp gauge
   fill(255,0,0);
   rect(410,50,health,30);               //hp gauge 410:min,610:max
   stroke(255,0,0);
@@ -119,26 +119,26 @@ if(enemyY+30.5>=fighterY+25.5 && enemyY-fighterY<=80){
   enemyY--;
 }
 else if(enemyY+30.5>=fighterY+25.5 && enemyY-fighterY<=160){
-  enemyY-=2;
-}
-else if(enemyY+30.5>=fighterY+25.5 && enemyY-fighterY<=240){
   enemyY-=3;
 }
-else if(enemyY+30.5>=fighterY+25.5 && enemyY-fighterY<=480){
+else if(enemyY+30.5>=fighterY+25.5 && enemyY-fighterY<=240){
   enemyY-=4;
+}
+else if(enemyY+30.5>=fighterY+25.5 && enemyY-fighterY<=480){
+  enemyY-=5;
 }
 
 if(enemyY+30.5<=fighterY+25.5 && fighterY-enemyX<=80){
   enemyY++;
 }
 else if(enemyY+30.5<=fighterY+25.5 && fighterY-enemyX<=160){
-  enemyY+=2;
-}
-else if(enemyY+30.5<=fighterY+25.5 && fighterY-enemyX<=240){
   enemyY+=3;
 }
-else if(enemyY+30.5<=fighterY+25.5 && fighterY-enemyX<=480){
+else if(enemyY+30.5<=fighterY+25.5 && fighterY-enemyX<=240){
   enemyY+=4;
+}
+else if(enemyY+30.5<=fighterY+25.5 && fighterY-enemyX<=480){
+  enemyY+=5;
 }
 break;
    
