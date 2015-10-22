@@ -1,5 +1,6 @@
 PImage bg1,bg2,start1,start2,end1,end2,enemy,fighter,hp,treasure;
 int health,bgX,bgY,GAMEMODE=1,fighterX,fighterY,treasureX,treasureY,enemyX,enemyY;
+int upDetect,downDetect,leftDetect,rightDetect;                         //used to detect collision
 boolean upPressed=false;
 boolean downPressed=false;
 boolean leftPressed=false;
@@ -26,8 +27,8 @@ void setup () {
   GAMEMODE=1;
   fighterX=540;                       
   fighterY=240;
-  treasureX=floor(random(30,589));
-  treasureY=floor(random(30,429));
+  treasureX=floor(random(30,610));
+  treasureY=floor(random(30,450));
   enemyX=-61;
   enemyY=floor(random(0,429));
   health=610;
@@ -64,6 +65,17 @@ case 2:                                //start game
     bgY=-640;
   }
 
+  upDetect=floor(random(fighterX,fighterX+51));
+  downDetect=floor(random(fighterX,fighterX+51));
+  leftDetect=floor(random(fighterY,fighterY+51));
+  rightDetect=floor(random(fighterY,fighterY+51));
+  
+  println("up"+upDetect);
+  println("down"+downDetect);
+  println("left"+leftDetect);
+  println("right"+rightDetect);
+
+
   image(fighter,fighterX,fighterY);     //fighter
   if(upPressed && fighterY>0){
     fighterY-=4;
@@ -81,21 +93,22 @@ case 2:                                //start game
   image(treasure,treasureX,treasureY); //treasure
 
   image(enemy,enemyX,enemyY);          //moving enemy
-   enemyX+=6;
+   enemyX+=5;
    if(enemyX>=780){                    //border restart & random spawn
     enemyY=floor(random(30,450));
     enemyX=-61;
    }
 
-  rectMode(CORNERS);                    //hp gauge
+  rectMode(CORNERS);                    //chp gauge
   fill(255,0,0);
   rect(410,50,health,30);               //hp gauge 410:min,610:max
   stroke(255,0,0);
   image(hp,405,28);
 
   
-                                        //damage/heal detector
-  if(fighterY+25.5>=enemyY && fighterY+25.5<=enemyY+61 && fighterX<=enemyX+61 && fighterX>=enemyX){
+                                        //damage detector
+  if(upDetect>=enemyX && upDetect<=enemyX+61 && fighterY>=enemyY && fighterY<=enemyY+61 || downDetect>=enemyX && downDetect<=enemyX+61 && fighterY+51>=enemyY && fighterY+51<=enemyY+61
+      || leftDetect>=enemyY && leftDetect<=enemyY+61 && fighterX>=enemyX && fighterX<=enemyX+61 || rightDetect>=enemyY && rightDetect<=enemyY+61 && fighterX+51>=enemyX && fighterX+51<=enemyX+61){
                                                                                            
         
      if(health>450){
@@ -106,8 +119,9 @@ case 2:                                //start game
      else{                              //gameover detect
        GAMEMODE=3;
         }
-  }     
-     if(fighterY+25.5>=treasureY && fighterY+25.5<=treasureY+41 && fighterX>=treasureX && fighterX<=treasureX+51){
+  }                                     //heal detector
+     if(upDetect>=treasureX && upDetect<=treasureX+41 && fighterY>=treasureY && fighterY<=treasureY+41 || downDetect>=treasureX && downDetect<=treasureX+41 && fighterY+51>=treasureY && fighterY+51<=treasureY+41
+      || leftDetect>=treasureY && leftDetect<=treasureY+41 && fighterX>=treasureX && fighterX<=treasureX+41 || rightDetect>=treasureY && rightDetect<=treasureY+41 && fighterX+51>=treasureX && fighterX+51<=treasureX+41){
       treasureX=floor(random(0,589));
       treasureY=floor(random(0,429));      
       if(health<=590){
@@ -116,7 +130,7 @@ case 2:                                //start game
      }
                                         //enemy chasing
 if(enemyY+30.5>=fighterY+25.5 && enemyY-fighterY<=80){       
-  enemyY--;
+  enemyY-=2;
 }
 else if(enemyY+30.5>=fighterY+25.5 && enemyY-fighterY<=160){
   enemyY-=3;
@@ -129,7 +143,7 @@ else if(enemyY+30.5>=fighterY+25.5 && enemyY-fighterY<=480){
 }
 
 if(enemyY+30.5<=fighterY+25.5 && fighterY-enemyX<=80){
-  enemyY++;
+  enemyY+=2;
 }
 else if(enemyY+30.5<=fighterY+25.5 && fighterY-enemyX<=160){
   enemyY+=3;
