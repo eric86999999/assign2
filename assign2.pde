@@ -29,9 +29,9 @@ void setup () {
   fighterY=240;
   treasureX=floor(random(30,610));
   treasureY=floor(random(30,450));
-  enemyX=-61;
+  enemyX=-200;
   enemyY=floor(random(0,429));
-  health=610;
+  health=450;
 }
 
 void draw() {
@@ -41,7 +41,7 @@ switch(GAMEMODE){
 case 1:                         //start menu
 
   image(start2,0,0);
-  if ((mouseX<width*2/3 && mouseX>width*1/3)&&(mouseY<422 && mouseY>380)){    //detecting mouse area
+  if ((mouseX<444 && mouseX>202)&&(mouseY<422 && mouseY>380)){    //detecting mouse area
     image(start1,0,0);
 if(mousePressed){
 GAMEMODE=2;
@@ -87,7 +87,7 @@ case 2:                                //start game
    enemyX+=5;
    if(enemyX>=780){                    //border restart & random spawn
     enemyY=floor(random(30,450));
-    enemyX=-61;
+    enemyX=-200;
    }
 
   rectMode(CORNERS);                    //hp gauge
@@ -151,7 +151,7 @@ case 3:                               //game over
   if ((mouseX<width*2/3 && mouseX>width*1/3)&&(mouseY<355 && mouseY>308)){
     image(end1,0,0);
 if(mousePressed){                            
-  health=610;                         //restart
+  health=450;                         //restart
   enemyX=-61;
   fighterX=540;
   fighterY=240;
